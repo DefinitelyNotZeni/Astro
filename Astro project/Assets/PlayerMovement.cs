@@ -12,7 +12,7 @@ public class PlayerControls : MonoBehaviour
     
     void Start()
     {
-        r = GetComponent<Rigigbody>();
+        r = GetComponent<Rigidbody>();
     }
 
     public float speed = 10.0f;
