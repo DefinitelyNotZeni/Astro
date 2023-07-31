@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class weap : MonoBehaviour
 {
-
     public Transform firePoint;
     public GameObject bulletPrefab;
+    bool down = false;
 
-    // Update is called once per frame
+    public float FireDelay;
+        
+
+    void Start()
+    {
+        down = false;
+    }
+
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0))
         {
-            Shoot();
+            down = true;
+            InvokeRepeating("Shoot", 0f, FireDelay);
+            Debug.Log("Down");
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            Debug.Log("Up");
+            down = false;
+            CancelInvoke("Shoot");
+        }
+    }
 
-        void Shoot()
-        {
-            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        }
+    private void Shoot()
+    {
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 }

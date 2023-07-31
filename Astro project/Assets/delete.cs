@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Delete : MonoBehaviour
 {
+    public float DeleteTime;
 
     private void Awake()
      {  
@@ -12,8 +13,9 @@ public class Delete : MonoBehaviour
 
     IEnumerator waiter()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(DeleteTime);
         Object.Destroy(this.gameObject);
     }
+
 
 }
